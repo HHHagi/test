@@ -1,31 +1,33 @@
 <?php
-
-if(!empty($_POST['user_choice'])) {
- $user_choice = $_POST['user_choice'];
-}
-
-$choice = array("グー","チョキ","パー");
-$random = array_rand($choice);
-$random_choice = $choice[$random];
+ $user_choice = "";
+ $random_choice = "";
+ $choice = array("グー","チョキ","パー");
 
 function jyanken($user,$computer){
-if ($user === $computer) {
-    $result = 'あいこ';
-// 勝ち条件
-} elseif (
-    $user === 'グー' && $computer === 'チョキ' ||
-    $user === 'チョキ' && $computer === 'パー' ||
-    $user === 'パー' && $computer === 'グー'
-    ) {
-    $result = 'あなたの勝利です！';
-// どの条件とも一致しない（負け）
-} else {
-    $result = 'あなたの敗北です。。。';
+
+switch($user){
+    case $computer:
+        $result = 'あいこ';
+        break;
+    case "グー":
+        $result = ($computer === 'チョキ') ? 'あなたの勝利です！' : 'あなたの敗北です。。。';
+        break;
+    case "チョキ":
+        $result = ($computer === 'パー') ? 'あなたの勝利です！' : 'あなたの敗北です。。。';
+        break;
+    case "パー":
+        $result = ($computer === 'グー') ? 'あなたの勝利です！' : 'あなたの敗北です。。。';
+        break;
 }
 return $result;
 }
 
-$judgement = jyanken($user_choice,$random_choice);
+if(!empty($_POST['user_choice'])) {
+    $user_choice = $_POST['user_choice'];
+    $random = array_rand($choice);
+    $random_choice = $choice[$random];
+    $judgement = jyanken($user_choice,$random_choice);
+}
 
 ?>
 
@@ -46,6 +48,6 @@ $judgement = jyanken($user_choice,$random_choice);
     </form>
     <?php echo "自分：".$user_choice; ?><br>
     <?php echo "相手：".$random_choice; ?><br>
-    <?php echo $judgement; ?>
+    <?php if(!empty($judgement)) echo  $judgement; ?>
 </body>
 </html>

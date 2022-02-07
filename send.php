@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
-<title>掲示板</title>
-<h1>掲示板</h1>
-<section>
-    <h2>投稿が完了しました。</h2>
-    <button onclick="location.href='test3_1.php'">投稿一覧へ戻る</button>
-</section>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>掲示板</title>
+</head>
+
+<body>
+    <h1>掲示板</h1>
+    <section>
+        <h2>投稿が完了しました。</h2>
+        <button onclick="location.href='test3_1.php'">投稿一覧へ戻る</button>
+    </section>
+</body>
+
+</html>
+
 
 <?php
 $id = null;

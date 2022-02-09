@@ -45,11 +45,15 @@ $getPost->execute();
         <?php $post_number = 1; ?>
         <?php foreach ($getPost as $loop) : ?>
             <article class="post">
-                <form action="delete.php" method="post">
+                <form action="edit.php" method="post">
                     <div>No：<?php echo $post_number;
                             $post_number++; ?></div>
                     <div>名前：<?php echo $loop['name'] ?></div>
                     <div>投稿内容：<?php echo $loop['contents'] ?></div>
+                    <div><input type="hidden" name="post_id" value=<?php echo $loop['id'] ?>></div>
+                    <div><button type="submit">編集</button></div>
+                </form>
+                <form action="delete.php" method="post">
                     <div><input type="hidden" name="post_id" value=<?php echo $loop['id'] ?>></div>
                     <div><button type="submit">削除</button></div>
                 </form>

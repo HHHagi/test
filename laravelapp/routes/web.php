@@ -17,11 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('login', 'App\Http\Controllers\TestController@login');
+Route::get('login', 'App\Http\Controllers\LoginRegisterController@login');
 
-Route::get('register', 'App\Http\Controllers\TestController@register');
+Route::get('register', 'App\Http\Controllers\LoginRegisterController@register');
 
-Route::post('login', 'App\Http\Controllers\TestController@login');
+Route::post('login', 'App\Http\Controllers\LoginRegisterController@login');
 
-Route::post('register','App\Http\Controllers\TestController@register');
+Route::post('register','App\Http\Controllers\LoginRegisterController@register');
 

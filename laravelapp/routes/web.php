@@ -23,5 +23,5 @@ Route::get('register', 'App\Http\Controllers\LoginRegisterController@register');
 
 Route::post('login', 'App\Http\Controllers\LoginRegisterController@login');
 
-Route::post('register','App\Http\Controllers\LoginRegisterController@register');
+Route::post('register','App\Http\Controllers\LoginRegisterController@post');
 

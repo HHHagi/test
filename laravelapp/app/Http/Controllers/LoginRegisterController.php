@@ -11,16 +11,17 @@ class LoginRegisterController extends Controller
 
     public function login()
     {
-        return view('test.login');
+        return view('laravel_views.login');
     }
 
     public function register()
     {
-        return view('test.register');
+        return view('laravel_views.register');
     }
 
     public function post(ValidateRequest $request)
     {
-        return view('test.home', ['name' => $request->name]);
+        $name = $request->name;
+        return view('laravel_views.home', compact('name'));
     }
 }

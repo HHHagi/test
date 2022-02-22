@@ -10,18 +10,18 @@ use Illuminate\Support\Facades\DB;
 
 class ToDoListController extends Controller
 {
-    public function main(Request $request)
+    public function index(Request $request)
     {
         $items = DB::select('select * from comments');
-        return view('laravel_views.main', ['items' => $items]);
+        return view('laravel_views.todolist_home', compact('items'));
     }
 
-    public function create(Request $request)
+    public function store(ValidateRequest $request)
     {
         $param = [
             'comment' => $request->comment,
         ];
         DB::insert('insert into comments (comment) values (:comment)', $param);
-        return redirect('/main');
+        return redirect('/todolist_home');
     }
 }

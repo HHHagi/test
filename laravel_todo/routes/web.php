@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('main', 'App\Http\Controllers\ToDoListController@main');
+Route::get('todolist_home', 'App\Http\Controllers\ToDoListController@index');
 
-Route::post('main','App\Http\Controllers\ToDoListController@create');
+Route::post('todolist_home','App\Http\Controllers\ToDoListController@store');
 

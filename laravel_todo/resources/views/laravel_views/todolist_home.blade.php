@@ -18,9 +18,12 @@
 @endforeach
 </table>
 
+<h2>新規タスクの追加</h2><br>
+@error('comment')
+<div>{{$message}}</div>
+@enderror
 <form method="post">
      @csrf
-<h2>新規タスクの追加</h2><br>
  <input type="text" name="comment">
  <button type="submit">追加</button>
  </form>

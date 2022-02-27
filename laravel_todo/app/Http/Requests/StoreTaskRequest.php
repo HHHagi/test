@@ -4,12 +4,12 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ValidateRequest extends FormRequest
+class  StoreTaskRequest extends FormRequest
 {
 
     public function authorize()
     {
-        if ($this->path() == 'todolist_home') {
+        if ($this->path() == 'tasks') {
             return true;
         } else {
             return false;
@@ -19,15 +19,15 @@ class ValidateRequest extends FormRequest
     public function rules()
     {
         return [
-            'comment' => 'required|max:100'
+            'task' => 'required|max:100'
         ];
     }
 
     public function messages()
     {
         return [
-            'comment.required' => 'コメントを入力してください。',
-            'comment.max' => '１００文字以下で入力してください。',
+            'task.required' => 'コメントを入力してください。',
+            'task.max' => '１００文字以下で入力してください。',
         ];
     }
 }

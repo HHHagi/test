@@ -8,6 +8,8 @@ use App\Http\Requests\StoreTaskRequest;
 
 use Illuminate\Support\Facades\DB;
 
+use App\Models\Tasks;
+
 class TaskController extends Controller
 {
     /**
@@ -17,7 +19,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $items = DB::select('select * from tasks');
+        $items = Tasks::all();
         return view('laravel_views.tasks', compact('items'));
     }
 
@@ -39,10 +41,9 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request)
     {
-        $param = [
-            'task' => $request->task,
-        ];
-        DB::insert('insert into tasks (task) values (:task)', $param);
+        $tasks = new Tasks;
+        $form  = $request->all();
+        $tasks->fill($form)->save();
         return redirect('/tasks');
     }
     /**

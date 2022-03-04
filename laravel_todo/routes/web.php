@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('tasks', 'App\Http\Controllers\TaskController');
+Route::resource('tasks', 'App\Http\Controllers\TaskController', ['only' => ['index', 'store']]);

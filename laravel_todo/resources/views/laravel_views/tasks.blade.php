@@ -18,7 +18,14 @@
      <tr>
           <td>{{$loop->iteration}}</td>
           <td>{{$item->task}} </td>
-          <td><button type="text">作業中</button><button type="text">削除</button></td>
+          <td><button type="text">作業中</button>
+               <form action="{{ route('tasks.destroy', $item->id)}}" method="post" style="display: inline">
+                    @csrf
+                    @method('delete')
+                    <button type="submit">削除</button>
+               </form>
+          </td>
+
      </tr>
      @endforeach
 </table>

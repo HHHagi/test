@@ -36,7 +36,6 @@ class TaskController extends Controller
         $tasks->fill($form)->save();
         return redirect('/tasks');
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -57,6 +56,9 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tasks = new Tasks;
+        $tasks::find($id)->delete();
+        return redirect('/tasks');
     }
+
 }

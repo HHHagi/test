@@ -45,7 +45,15 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tasks =  Tasks::find($id);
+        $status = $tasks->status;
+        if ($status === 0) {
+            $tasks->status = 1;
+        } else {
+            $tasks->status = 0;
+        }
+        $tasks->save();
+        return redirect('/tasks');
     }
 
     /**
@@ -59,5 +67,4 @@ class TaskController extends Controller
         Tasks::find($id)->delete();
         return redirect('/tasks');
     }
-
 }

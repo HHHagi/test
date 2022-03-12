@@ -43,15 +43,11 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
         $tasks =  Tasks::find($id);
         $status = $tasks->status;
-        if ($status === 0) {
-            $tasks->status = 1;
-        } else {
-            $tasks->status = 0;
-        }
+        $tasks->status = $status === 0 ? 1 : 0;
         $tasks->save();
         return redirect('/tasks');
     }

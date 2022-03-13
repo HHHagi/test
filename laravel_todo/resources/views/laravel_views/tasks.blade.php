@@ -18,7 +18,26 @@
      <tr>
           <td>{{$loop->iteration}}</td>
           <td>{{$item->task}} </td>
-          <td><button type="text">作業中</button><button type="text">削除</button></td>
+          <td>
+               <form action="{{ route('tasks.update', $item->id)}}" method="post" style="display: inline">
+                    @csrf
+                    @method('patch')
+                    <button type="submit">
+                         @if($item->status === 0)
+                         作業中
+                         @else($item->status === 1)
+                         完了
+                         @endif
+                    </button>
+               </form>
+
+               <form action="{{ route('tasks.destroy', $item->id)}}" method="post" style="display: inline">
+                    @csrf
+                    @method('delete')
+                    <button type="submit">削除</button>
+               </form>
+          </td>
+
      </tr>
      @endforeach
 </table>

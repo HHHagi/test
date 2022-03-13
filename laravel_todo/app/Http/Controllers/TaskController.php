@@ -36,7 +36,6 @@ class TaskController extends Controller
         $tasks->fill($form)->save();
         return redirect('/tasks');
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -44,9 +43,13 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        $tasks =  Tasks::find($id);
+        $status = $tasks->status;
+        $tasks->status = $status === 0 ? 1 : 0;
+        $tasks->save();
+        return redirect('/tasks');
     }
 
     /**
@@ -57,6 +60,7 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Tasks::find($id)->delete();
+        return redirect('/tasks');
     }
 }

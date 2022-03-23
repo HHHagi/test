@@ -47,7 +47,7 @@ class TaskController extends Controller
     {
         $tasks =  Tasks::find($id);
         $status = $tasks->status;
-        $tasks->status = $status === 0 ? 1 : 0;
+        $tasks->status = $status === "work" ? "done" : "work";
         $tasks->save();
         return redirect('/tasks');
     }
